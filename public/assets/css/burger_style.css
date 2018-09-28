@@ -1,0 +1,22 @@
+body {
+    background: url('../img/burger.jpg') fixed no-repeat !important;
+    background-size: cover !important;
+}
+
+.eat {
+    color: white;
+    font-family: 'Indie Flower', cursive;
+}
+
+.uneaten {
+    margin-top: 3px;
+}
+.devoured {
+    margin-top: 3px;
+}
+h3, h6{
+    font-family: 'Indie Flower', cursive;
+}
+.row {
+    opacity: .95;
+}

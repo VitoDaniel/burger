@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+            <h1 class="center eat">Eat-Da-Burger!</h1>
+    </div>
+    <div class="row">
+        <div class="card horizontal offset-12 col s12 m12">
+            <div class="card-stacked">
+                <h3 class="center">Add a Burger</h3>
+       
+                <div class="card-content">
+                    <form action="/burger/create" method="POST">
+                        <div class="input-field col s12 addBurg">
+                            <input placeholder="Baconator burg..." type="text" class="addBurger" name="addBurger" required=""
+                                aria-required="true" oninvalid="this.setCustomValidity('Please Enter a Burger')"
+                                oninput="setCustomValidity('')"></input>
+                        </div>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light burgerButton col offset-s3 s6" type="submit"
+                                name="action">Create!
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col 16 m12 s12">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <h3 class="center">Burgers to devour!</h3>
+                    <h6 class="center">Click to devour!</h6>
+                    <div class="divider"></div>
+                    <div class="card-content">
+                        <div class="col s12 buttons">
+                            {{#each burgers}}
+                            {{#unless this.devoured}}
+                            <form action="/burgers/{{this.id}}" method="POST">
+                                <button class="btn waves-effect waves-light uneaten truncate col s12 z-depth-5 hoverable tooltipped"
+                                    type="submit" name="action">{{this.burger_name}}
+                                </button>
+                            </form>
+                            {{/unless}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col 16 m12 s12">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <h3 class="Devoured Burgers center">Devoured Burgers</h3>
+                    <div class="divider"></div>
+                    <div class="card-content">
+                        <div class="col s12 buttons">
+                            {{#each burgers}}
+                            {{#if this.devoured}}
+                            {{#unless this.deleted}}
+                            <form action="/delete/{{this.id}}" method="POST">
+                                <button class="btn waves-effect waves-light devoured truncate col s12 z-depth-5 hoverable tooltipped2"
+                                    type="submit" name="action">{{this.burger_name}}
+                                    <i class="fas fa-trash right"></i>
+                                </button>
+                            </form>
+                            {{/unless}}
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
