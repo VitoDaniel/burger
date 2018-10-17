@@ -1,63 +1,34 @@
-# Ubuntu Vagrant Shell
-## Simple foundation for App development
+Eat Da Burger! 🍔
+Built with MySQL, Node, Express, Handlebars and ORM. Uses Node and MySQL to query and route data in your app, and Handlebars to generate HTML.
 
-### Requirements:
-* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-* [Vagrant](https://www.vagrantup.com/downloads.html)
+Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
+🍔🍔🍔
+## How it works:
+* Whenever a user submits a burger's name, your app will display the burger on the
+ left side of the page -- waiting to be devoured.
 
-## Usage
-This is intended to be a simple Ubuntu 16.04LTS server with Node 8 installed during provisioning. This can easily be extended to include other services like MySql, Mongo, React CLI, etc.
+* Each burger in the waiting area also has a `Devour` button. When the user
+ clicks it, the burger will move to the right side of the page.
 
-### Spin up the VM
-After cloning the repository, change into the project directory (where `vagrantfile` is located) and issue the following command:
+* Your app will store every burger in a database, whether devoured or not.
 
-`vagrant up`
 
-> Note: The first boot of your new VM will take a while, especially if this is ALSO the first time you're using the "box" that's configured in `vagrantfile` since it will need to be downloaded. After that, the provisioner will run a lot of scripts. **Don't panic if you see red** during the provisioning.
+# Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Access the VM's terminal console
-After the VM is finished booting and is provisioned, you can access the VM terminal with:
+## Prerequisites
+This app requires a number of programs:
 
-`vagrant ssh`
+* Node.js
+* MySQL Workbench
+* NPM Packages:
+* Express
+* Express-Handlers
+* Body-Parser
+* MySQL
+* dotenv
 
-### File Mapping
+🍔🍔🍔
+# Deployment
+This application is delployed at *still in process*
 
-The local `/code` folder in this project is automatically mapped to `/var/code` in the VM by default.
-
-### Getting out of the VM
-To exit the VM console, like any other SSH session, use the `exit` command.
-
-### Turning VM off
-`vagrant halt`
-
-### Completely wipe the VM and start over 
-`vagrant destroy` -> `vagrant up`
-
-> Note: mounted files are unaffected by this operation)
-
-## Windows & Virtualization
-> **Important**: Windows machines will need to enable Virtualization if it has been disabled in the BIOS.
-
-Virtualization must be enabled for Vagrant, and some Windows machines will disable this by default. To check this, open Task Manager then click Performance. Near bottom right Virtualization should be enabled. If it is not, this will need to be enabled in the BIOS before Vagrant will function correctly.
-
-> **Note on NPM** - Windows users may need to use the `--no-bin-links` option of npm when installing/updating modules since Windows has some default permission settings that cause errors when creating symlinks. Running **Gitbash** explicitly as an Adminstrator may also help (shift-right click, "Run as Administrator"), but if not you can also open the Group Policy Editor (gpedit.msc) and enabled symlinks for all users under Computer Config -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create Symbolic Links
-
-## Custom Host Name
-In order to access your VM outside the console, like in a web browser or database management tool, it's easiest to give your VM's `ip address` a **host entry** on your development machine.
-
-Host Format:
-
-`000.000.000.000 hostname.local`
-
-Where the first part is a valid local IP Address, and the second is the name of the host. `.local` is common for development.
-
-Add this line to your **hosts** file. Like many things, this depends on your Operating System
-
-* **Mac / Linux** :  sudo nano /etc/hosts
-* **Windows** : Open C:\Windows\System32\Drivers\etc\hosts in Text Editor (**with Admin permission**!)
-
-You can test your Custom Host name (local) resolution with this command in a terminal:
-
-`$ ping hostname.local`
-
-Expected result is that the `hostname.local` resolves to the IP address you put in the hosts file. It does not matter if it times out, just that it resolves to the correct IP.
