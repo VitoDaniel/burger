@@ -30,5 +30,5 @@ This app requires a number of programs:
 
 🍔🍔🍔
 # Deployment
-This application is delployed at *still in process*
+This application is delployed at *https://bbburger.herokuapp.com/*
 
